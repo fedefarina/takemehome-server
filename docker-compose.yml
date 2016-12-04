@@ -1,0 +1,14 @@
+db:
+  image: postgres
+  ports:
+    - "5432:5432"
+server:
+  build: .
+  links:
+    - db
+  environment:
+    - PGHOST=db
+    - PGDATABASE=postgres
+    - PGUSER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - PG_TRUST_LOCALNET=true

@@ -1,0 +1,32 @@
+{
+  "name": "SharedServer",
+  "version": "0.1.0",
+  "description": "A Node.js app using Express 4",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "body-parser": "1.8",
+    "chai": "^3.5.0",
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "geolib": "^2.0.21",
+    "ip": "^1.1.4",
+    "method-override": "^2.3.5",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "4.5.1",
+    "q": "^1.4.1",
+    "underscore": "^1.8.3"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

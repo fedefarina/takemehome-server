@@ -1,0 +1,86 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="main-navigator">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">TakeMeHome</a>
+            <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/form_viewUser">Usuarios</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile" style="transform: translateX(-100%);">
+                <li><a href="/form_viewUser">Usuarios</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <h2 class="header center-align">Take me Home</h2>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="panel panel-default">
+                          <!-- Table -->
+                          <table class="table table-striped ">
+                            <thead>
+                            <tr>
+                                <th data-field="nombre">Apellido y Nombre</th>
+                                <th data-field="padron">Padron</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>FARINA, FEDERICO</td>
+                                <td>90177</td>
+                            </tr>
+                            <tr>
+                                <td>ECHECONEA, RODRIGO</td>
+                                <td>90177</td>
+                            </tr>
+                            <tr>
+                                <td>ROCHA, SEBASTIAN</td>
+                                <td>90177</td>
+                            </tr>
+                            <tr>
+                                <td>CAPON, LUCIA</td>
+                                <td>90177</td>
+                            </tr>
+                            <tr>
+                                <td>RUIZ ECHAZU, MANUEL</td>
+                                <td>90177</td>
+                            </tr>
+                            <tr>
+                                <td>ADDIN, KEVIN</td>
+                                <td>90177</td>
+                            </tr>
+                            <tr>
+                                <td>FLAVIO</td>
+                                <td>90177</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/js/materialize.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".button-collapse").sideNav();
+    });
+</script>
+</body>
+</html>
