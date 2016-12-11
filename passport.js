@@ -10,21 +10,21 @@ exports = module.exports = function (app, passport) {
 
   passport.use(new LocalStrategy(
   function (username, password, done) {
+
     pg.connect(config.DATABASE_URL, function (err, client, pgDone) {
       client.query("SELECT * FROM users" +
       " WHERE alias = ($1)", [username], function (err, result) {
         pgDone();
 
         if (err) {
-
           return done(err);
         }
-
         if (!result.rowCount) {
           return done(null, false, {message: 'Unknown user'});
         }
 
         var user = result.rows[0];
+
         if (user.password !== utils.encryptPassword(password)) {
           return done(null, false, {message: 'Invalid password'});
         }
@@ -36,6 +36,8 @@ exports = module.exports = function (app, passport) {
         if (user.photo_profile) {
           user.photo_profile = encodeURI(user.photo_profile.toString());
         }
+
+        return done(null, user);
       });
     });
   }
