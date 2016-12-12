@@ -54,26 +54,37 @@ UserService.prototype.get = function (userId, next) {
 };
 
 UserService.prototype.create = function (data, next) {
+  var that = this;
   pg.connect(config.DATABASE_URL, function (err, client, done) {
     var encryptedPassword = utils.encryptPassword(data.password);
     var photo_profile_base64 = data.photo_profile ? data.photo_profile.replace(/ /g, '+') : null;
     client.query("SELECT * FROM users WHERE alias = ($1)", [data.username], function (err, result) {
       if (result.rowCount) {
         done();
-        next({message: "Username already taken"}, null);
+        next({message: "Username already taken"}, null)
       } else {
         var user = [data.name, data.username, encryptedPassword, data.email, data.gender, data.age
-          , data.latitude, data.longitude, photo_profile_base64];
+          , data.latitude, data.longitude, photo_profile_base64]
 
         //Create user
         client.query("INSERT INTO users(name, alias, password, email, gender, age, latitude, longitude, photo_profile)" +
         " values($1, $2, $3, $4, $5, $6, $7, $8, $9)", user, function (err, result) {
-          done();
+
           if (err) {
+            done();
             console.log(err);
             next(err);
           } else {
-            next(null, {});
+            client.query("SELECT * FROM users WHERE alias = ($1)", [data.username], function (err, result) {
+              if (err) {
+                done();
+                console.log(err);
+                next(err);
+              } else {
+                done();
+                next(null, that.createUserFromResult(result.rows[0], true));
+              }
+            });
           }
         });
       }

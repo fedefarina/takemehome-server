@@ -14,7 +14,7 @@ exports.create = function (request, response) {
     if (err) {
       return response.status(500).json({error: err.message});
     }
-    return response.status(200).json({message: "Successful signup"});
+    return response.status(200).json(result);
   });
 };
 
